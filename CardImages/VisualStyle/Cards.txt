@@ -1,0 +1,10 @@
+PixelArt.png|Pixel Art
+LowPoly.png|Low-Poly
+Cartoon.png|Cartoon
+HandPainted.png|Hand-Painted
+Minimalist.png|Minimalist
+Retro.png|Retro
+Comic.png|Comic
+Dark.png|Dark
+Paper-Craft.png|Paper Craft
+Surreal.png|Surreal

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Concept Card Challenge | Open Day</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="cards.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="university"><span class="mark">◈</span> RAVENSBOURNE UNIVERSITY LONDON <span class="separator">/</span> OPEN DAY EXPERIENCE</div>
+      <h1>GAME CONCEPT <span>CARD CHALLENGE</span></h1>
+    </header>
+
+    <main class="page" id="welcome">
+      <div class="hero-symbol" aria-hidden="true">✦</div>
+      <div class="eyebrow">YOUR CREATIVE BRIEF AWAITS</div>
+      <h2>Five choices.<br><span>One original game idea.</span></h2>
+      <p>Choose one mystery card in each round. Watch it flip to reveal a topic, then combine all five topics into a unique game concept.</p>
+      <div class="pill-row"><span>01 Genre</span><span>02 Audience</span><span>03 Mechanic</span><span>04 Visual</span><span>05 Constraint</span></div>
+      <button class="primary-btn" id="start">START CHALLENGE <span>→</span></button>
+    </main>
+
+    <main class="page hidden" id="round">
+      <div class="step-label" id="round-number">ROUND 1 OF 5</div>
+      <h2 id="round-title">CHOOSE YOUR GENRE</h2>
+      <p class="round-instruction">Ask a visitor to select a numbered mystery card, then click it to reveal their choice.</p>
+      <div class="card-grid" id="card-grid" role="group" aria-label="Mystery cards"></div>
+      <div class="bottom-row">
+        <div class="choice-area"><div id="chosen-message" aria-live="polite">PICK ANY ONE CARD</div><div class="past-choices" id="past-choices"></div></div>
+        <button class="primary-btn" id="next" disabled>NEXT ROUND <span>→</span></button>
+      </div>
+    </main>
+
+    <main class="page hidden" id="results">
+      <div class="step-label">THE FINAL REVEAL</div>
+      <h2>YOUR FIVE-CARD <span>DESIGN BRIEF</span></h2>
+      <p class="round-instruction">Can you combine these five choices into one original game idea?</p>
+      <div id="result-cards" class="result-grid"></div>
+      <div class="result-prompt">Give your game a title <b>•</b> Describe the player experience <b>•</b> Explain why it works</div>
+      <button class="primary-btn" id="restart">START NEW CHALLENGE <span>↺</span></button>
+    </main>
+
+    <footer>DESIGN THE EXPERIENCE <span>•</span> UNDERSTAND THE BUSINESS <span>•</span> WORK TOGETHER</footer>
+  </div>
+</body>
+</html>

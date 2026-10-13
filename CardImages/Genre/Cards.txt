@@ -1,0 +1,10 @@
+Horror.png|Horror
+Platformer.png|Platformer
+Puzzle.png|Puzzle
+Racing.png|Racing
+Stealth.png|Stealth
+Adventure.png|Adventure
+Strategy.png|Strategy
+Survival.png|Survival
+Casual-Party.png|Casual / Party
+Rhythm.png|Rhythm

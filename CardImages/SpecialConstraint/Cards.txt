@@ -1,0 +1,10 @@
+One-Button.png|One-Button Control
+No-Dialogue.png|No Dialogue
+60-Second-Session.png|60-Second Sessions
+No-Combat.png|No Combat
+One-Room-Only.png|One Room Only
+Always-Moving.png|Always Moving
+No-Text-on-Screen.png|No Text on Screen
+Sound-Is_Essential.png|Sound Is Essential
+Co-Op-Required.png|Co-op Required
+Under-Constant-Chase.png|Under Constant Chase

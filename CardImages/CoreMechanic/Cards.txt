@@ -1,0 +1,10 @@
+MOVE & DODGE.png|Move & Dodge
+JUMP & TRAVERSE.png|Jump & Traverse
+COLLECT.png|Collect
+PUSH  PULL  MOVE OBJECTS.png|Push / Pull / Move Objects
+AIM & SHOOT.png|Aim & Shoot
+HIDE & EVADE.png|Hide & Evade
+BUILD & PLACE.png|Build & Place
+SWITCH  ACTIVATE.png|Switch & Activate
+CHOICE & CONSEQUENCE.png|Choice & Consequence
+CONNECT  COMBINE.png|Connect & Combine

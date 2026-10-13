@@ -1,0 +1,9 @@
+6-8.png|Ages 6–8
+9-12.png|Ages 9–12
+13-15.png|Ages 13–15
+16-18.png|Ages 16–18
+18+.png|18+ / Mature
+CasualPlayer.png|Casual Players
+CorePlayers.png|Core Players
+Family.png|Families
+AccessiblePlayers.png|Accessible Players
