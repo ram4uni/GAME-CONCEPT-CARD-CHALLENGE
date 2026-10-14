@@ -41,7 +41,58 @@
       <p class="round-instruction">Can you combine these five choices into one original game idea?</p>
       <div id="result-cards" class="result-grid"></div>
       <div class="result-prompt">Give your game a title <b>•</b> Describe the player experience <b>•</b> Explain why it works</div>
-      <button class="primary-btn" id="restart">START NEW CHALLENGE <span>↺</span></button>
+      <div class="action-row">
+        <button class="primary-btn" id="ready-next">ARE YOU READY? <span>→</span></button>
+        <button class="secondary-btn" id="restart">START NEW CHALLENGE ↺</button>
+      </div>
+    </main>
+
+    <main class="page hidden" id="ready">
+      <div class="ready-emblem" aria-hidden="true">✦</div>
+      <div class="step-label">YOUR GAME DESIGN CHALLENGE</div>
+      <h2 class="ready-heading">ARE <span>YOU READY?</span></h2>
+      <p class="ready-message">You have your five cards. Now turn those choices into an original game concept.</p>
+      <div class="ready-choices" id="ready-choices" aria-label="Your selected design brief"></div>
+      <div class="ready-task">
+        <strong>YOUR MISSION</strong>
+        <span>Agree on a game idea, choose a title and explain how your five choices fit together.</span>
+      </div>
+      <div class="action-row">
+        <button class="primary-btn" id="open-timer">SET THE TIMER <span>→</span></button>
+        <button class="secondary-btn" id="back-results">BACK TO YOUR CARDS</button>
+      </div>
+    </main>
+
+    <main class="page hidden" id="timer">
+      <div class="step-label">THE DESIGN CHALLENGE BEGINS</div>
+      <h2>YOUR <span>COUNTDOWN</span></h2>
+      <p class="timer-subtitle">Set how much time visitors have to develop their game concept.</p>
+      <div class="timer-controls">
+        <label for="timer-minutes">DURATION (MINUTES)</label>
+        <div class="timer-duration-row">
+          <input id="timer-minutes" type="number" min="1" max="180" step="1" value="15" inputmode="numeric" aria-describedby="timer-help">
+          <div class="timer-presets" aria-label="Quick timer durations">
+            <button class="preset-btn" type="button" data-minutes="10">10 MIN</button>
+            <button class="preset-btn" type="button" data-minutes="15">15 MIN</button>
+            <button class="preset-btn" type="button" data-minutes="20">20 MIN</button>
+          </div>
+        </div>
+        <div id="timer-help" class="timer-help">Enter any whole number from 1 to 180.</div>
+      </div>
+      <div class="timer-clock" role="timer" aria-label="Time remaining">
+        <div class="timer-caption" id="timer-status" aria-live="polite">READY TO START</div>
+        <div id="timer-display" class="timer-digits" aria-live="off">15:00</div>
+        <div class="timer-progress" aria-hidden="true"><div id="timer-progress-fill"></div></div>
+      </div>
+      <div class="action-row timer-actions">
+        <button class="primary-btn" id="timer-toggle">START TIMER <span>▶</span></button>
+        <button class="secondary-btn" id="timer-reset">RESET</button>
+      </div>
+      <div class="action-row timer-navigation">
+        <button class="text-btn" id="timer-back">← BACK TO CHALLENGE</button>
+        <button class="text-btn" id="timer-new">START NEW CHALLENGE ↺</button>
+      </div>
+      <p class="timer-note">Countdown stays accurate to elapsed time, even if you switch browser tabs.</p>
     </main>
 
     <footer>DESIGN THE EXPERIENCE <span>•</span> UNDERSTAND THE BUSINESS <span>•</span> WORK TOGETHER</footer>
