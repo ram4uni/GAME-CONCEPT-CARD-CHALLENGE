@@ -20,6 +20,23 @@
   let timerInterval = null;
   let timerState = 'idle'; // idle, running, paused, finished
   const now = () => Date.now();
+  // Local, one-shot completion sound. No sound is played while counting down.
+  const finishAudio = new Audio('timer-finish.wav');
+  finishAudio.preload = 'auto';
+  let finishSoundPlayed = false;
+  function stopFinishSound(){
+    finishAudio.pause();
+    finishAudio.currentTime = 0;
+    finishSoundPlayed = false;
+  }
+  function playFinishSound(){
+    if(finishSoundPlayed)return;
+    finishSoundPlayed = true;
+    finishAudio.currentTime = 0;
+    finishAudio.play().catch(()=>{
+      $('timer-sound-note').textContent = 'Sound was blocked by your browser. Check your audio settings.';
+    });
+  }
 
   function show(id) { panels.forEach(p => $(p).classList.toggle('hidden',p !== id)); }
   function shuffle(values) {
@@ -29,7 +46,7 @@
   }
   function imageSrc(category,file) { return 'CardImages/'+encodeURIComponent(category)+'/'+encodeURIComponent(file); }
   function el(tag,css,text){const n=document.createElement(tag); if(css)n.className=css;if(text!==undefined)n.textContent=text;return n;}
-  function start(){stopTicker();resetTimerState();chosen=[];round=0;setupRound();}
+  function start(){stopTicker();stopFinishSound();resetTimerState();chosen=[];round=0;setupRound();}
   function setupRound(){
     picked=false;
     const [category,label] = steps[round];
@@ -108,12 +125,12 @@
   function displayTimer(){
     const left=timeLeft();
     if(timerState==='running' && left<=0){
-      timerRemainingSeconds=0;timerDeadline=null;timerState='finished';stopTicker();
+      timerRemainingSeconds=0;timerDeadline=null;timerState='finished';stopTicker();playFinishSound();
     }
     const current=timeLeft();
     const finished=timerState==='finished';
     $('timer-display').textContent=finished?'TIME’S UP!':formatTime(current);
-    $('timer-status').textContent={idle:'READY TO START',running:'TIME REMAINING',paused:'TIMER PAUSED',finished:'CHALLENGE COMPLETE'}[timerState];
+    $('timer-status').textContent={idle:'READY TO START',running:'TIME REMAINING',paused:'TIMER PAUSED',finished:'CHALLENGE COMPLETE — GET READY TO PRESENT!'}[timerState];
     $('timer-toggle').disabled=finished;
     $('timer-toggle').innerHTML={idle:'START TIMER <span>▶</span>',running:'PAUSE TIMER <span>Ⅱ</span>',paused:'RESUME TIMER <span>▶</span>',finished:'TIME’S UP!'}[timerState];
     $('timer-minutes').disabled=timerState==='running'||timerState==='paused';
@@ -122,7 +139,7 @@
     document.querySelector('.timer-clock').classList.toggle('finished',finished);
   }
   function resetTimerState(){
-    stopTicker();timerState='idle';timerDeadline=null;
+    stopTicker();stopFinishSound();$('timer-sound-note').textContent='The timer is silent until it reaches zero. A short finish sound plays once.';timerState='idle';timerDeadline=null;
     const minutes=validMinutes();
     if(minutes===null)return false;
     timerDurationSeconds=minutes*60;timerRemainingSeconds=timerDurationSeconds;
