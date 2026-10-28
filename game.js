@@ -21,17 +21,17 @@
   let timerState = 'idle'; // idle, running, paused, finished
   const now = () => Date.now();
   // Local, one-shot completion sound. No sound is played while counting down.
-  const finishAudio = new Audio('timer-finish.wav');
-  finishAudio.preload = 'auto';
+  const finishAudio = typeof Audio === 'function' ? new Audio('timer-finish.wav') : null;
+  if (finishAudio) finishAudio.preload = 'auto';
   let finishSoundPlayed = false;
   function stopFinishSound(){
-    finishAudio.pause();
-    finishAudio.currentTime = 0;
+    if(finishAudio){finishAudio.pause();finishAudio.currentTime = 0;}
     finishSoundPlayed = false;
   }
   function playFinishSound(){
     if(finishSoundPlayed)return;
     finishSoundPlayed = true;
+    if(!finishAudio)return;
     finishAudio.currentTime = 0;
     finishAudio.play().catch(()=>{
       $('timer-sound-note').textContent = 'Sound was blocked by your browser. Check your audio settings.';
@@ -46,7 +46,16 @@
   }
   function imageSrc(category,file) { return 'CardImages/'+encodeURIComponent(category)+'/'+encodeURIComponent(file); }
   function el(tag,css,text){const n=document.createElement(tag); if(css)n.className=css;if(text!==undefined)n.textContent=text;return n;}
-  function start(){stopTicker();stopFinishSound();resetTimerState();chosen=[];round=0;setupRound();}
+  function start(){
+    stopTicker();stopFinishSound();
+    chosen=[];round=0;
+    if(!Array.isArray(window.OPEN_DAY_CARDS?.Genre)||!window.OPEN_DAY_CARDS.Genre.length){
+      $('start').insertAdjacentText('afterend',' Card data did not load. Please reload the page.');
+      return;
+    }
+    setupRound();
+    resetTimerState();
+  }
   function setupRound(){
     picked=false;
     const [category,label] = steps[round];
